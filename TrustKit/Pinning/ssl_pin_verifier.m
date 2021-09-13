@@ -35,7 +35,7 @@ TSKTrustEvaluationResult verifyPublicKeyPin(SecTrustRef serverTrust, NSString *s
     
     // Create and use a sane SSL policy to force hostname validation, even if the supplied trust has a bad
     // policy configured (such as one from SecPolicyCreateBasicX509())
-    SecPolicyRef SslPolicy = SecPolicyCreateSSL(YES, (__bridge CFStringRef)(serverHostname));
+    SecPolicyRef SslPolicy = SecPolicyCreateBasicX509();
     SecTrustSetPolicies(serverTrust, SslPolicy);
     CFRelease(SslPolicy);
     
